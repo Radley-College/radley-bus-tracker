@@ -1,0 +1,152 @@
+010 - Bristol - South West
+017 - South Gloucestershire - South West
+018 - Bath & North East Sommerset - South West
+019 - North Somerset - South West
+020 - Bedford - South East
+021 - Central Bedfordshire - South East
+029 - Luton - South East
+030 - West Berkshire - South East
+035 - Wokingham - South East
+036 - Windsor & Maidenhead - South East
+037 - Slough - South East
+038 - Bracknell Forest - South East
+039 - Reading - South East
+040 - Buckinghamshire - South East
+049 - Milton Keynes - South East
+050 - Cambridgeshire - East Anglia
+059 - Peterborough - East Midlands
+060 - Cheshire East - North West
+061 - Cheshire Wed & Chester - North West
+068 - Halton - North West
+069 - Warrington - North West
+075 - Hartlepool - North East
+076 - Darlington - North East
+077 - Stockton-on-Tees - North East
+078 - Redcar & Cleveland - North East
+079 - Middlesborough - North East
+080 - Cornwall - South West
+090 - Cumbria - North West
+100 - Derbyshire - East Midlands
+109 - Derby - East Midlands
+110 - Devon - South West
+118 - Plymouth - South West
+119 - Torbay - South West
+120 - Dorset - South West
+128 - Poole - South West
+129 - Bournemouth - South West
+130 - Durham - North East
+140 - East Sussex - South East
+149 - Brighton and Hove - South East
+150 - Essex - South East
+158 - Southend-on-Sea - South East
+159 - Thurrock - South East
+160 - Glouchestershire - South West
+180 - Greater Manchester - North West
+190 - Hampshire - South West
+198 - Southampton - South West
+199 - Portsmouth - South West
+200 - Worcestershire - West Midlands
+209 - Herefordshire - West Midlands
+210 - Hertfordshire - South East
+220 - East Riding of Yorkshire - Yorkshire
+227 - North Lincolnshire - East Midlands
+228 - North East Lincolnshire - East Midlands
+229 - Kingston upon Hull - Yorkshire
+230 - Isle of Wight - South East
+240 - Kent - South East
+249 - Medway - South East
+250 - Lancashire - North West
+258 - Blacknburn with Darwen - North West
+259 - Blackpool - North West
+260 - Leicestershire - East Midlands
+268 - Rutland - East Midlands
+269 - Leicester - East Midlands
+270 - Lincolnshire - East Midlands
+280 - Merseyside - North West
+290 - Norfolk - East Anglia
+300 - West Northamptonshire - East Midlands
+305 - North Northamptonshire - East Midlands
+310 - Northumberland - North East
+320 - North Yorkshire - Yorkshire
+329 - York - Yorkshire
+330 - Nottinghamshire - East Midlands
+339 - Nottingham - East Midlands
+340 - Oxfordshire - South East
+350 - Shropshire - West Midlands
+359 - Telford & Wrekin - West Midlands
+360 - Somerset - South West
+370 - South Yorkshire - Yorkshire
+380 - Staffordshire - West Midlands
+389 - Stoke-on-Trent - West Midlands
+390 - Suffolk - East Anglia
+400 - Surrey - South East
+410 - Tyne & Wear - North East
+420 - Warwickshire - West Midlands
+430 - West Midlands - West Midlands
+440 - West Sussex - South East
+450 - West Yorkshire - Yorkshire
+460 - Wiltshire - South West
+468 - Swindon - South West
+490 - Greater London - London
+511 - Denbighshire - Wales
+512 - Flintshire - Wales
+513 - Conwy - Wales
+514 - Wrexham - Wales
+521 - Pembrokeshire - Wales
+522 - Carmarthenshire - Wales
+523 - Ceredigion - Wales
+531 - Newport - Wales
+532 - Blaenau Gwent - Wales
+533 - Monmouthshire - Wales
+534 - Torfaen - Wales
+540 - Gwynedd - Wales
+541 - Isle of Anglesey - Wales
+551 - Bridgend - Wales
+552 - Rhodda Cynon Taff - Wales
+553 - Merthyr Tydfil - Wales
+554 - Caerphilly - Wales
+561 - Powys - Wales
+571 - Cardiff - Wales
+572 - Vale of Glamorgan - Wales
+581 - Swansea - Wales
+582 - Neath Port Talbot - Wales
+601 - Western Isles - Scotland
+602 - Orkney Islands - Scotland
+603 - Shetland Islands - Scotland
+607 - Argyll & Bute - Scotland
+608 - West Dunbartonshire - Scotland
+609 - Glasgow - Scotland
+611 - East Dunbartonshire - Scotland
+612 - East Renfrewshire - Scotland
+613 - Inverclyde - Scotland
+614 - Renfrewshire - Scotland
+615 - South Lanarkshire - Scotland
+616 - North Lanarkshire - Scotland
+617 - North Ayrshire - Scotland
+618 - East Ayrshire - Scotland
+619 - South Ayrshire - Scotland
+620 - Edinburgh - Scotland
+627 - East Lothian - Scotland
+628 - Midlothian - Scotland
+629 - West Lothian - Scotland
+630 - Aberdeenshire - Scotland
+638 - Moray - Scotland
+639 - Aberdeen - Scotland
+640 - Dundee - Scotland
+648 - Perth & Kinross - Scotland
+649 - Angus - Scotland
+650 - Fife - Scotland
+660 - Stirling - Scotland
+668 - Clackmannanshire - Scotland
+669 - Falkirk - Scotland
+670 - Highland - Scotland
+680 - Dumfries & Galloway - Scotland
+690 - Scottish Borders - Scotland
+700 - Northern Ireland - Northern Ireland
+910 - Rail (National) - DfT
+920 - Airports (National) - DfT
+930 - Ferry (National) - DfT
+940 - Tram (National) - DfT
+945 - Automated People Mover (National) - DfT
+970 - Northern Ireland Rail - Northern Ireland
+999 - Non-Passenger Stops - None
