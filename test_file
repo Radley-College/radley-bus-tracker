@@ -1,0 +1,25 @@
+import csv
+import os
+print(os.getcwd())
+
+gazetteer_id = 'E0050464'
+
+
+with open('data/atco.txt', 'r', encoding='utf-8') as f:
+    data = f.read()
+    
+    
+    #check what number each header correspond to in the Localities.csv file
+    """header = next(atco_data)
+    for number, name in enumerate(header):
+        print(number, name)"""
+    
+     
+    for row in data.split('\n'):
+        print(row)
+        if row[0] == gazetteer_id:
+            administrativeareacode = row[11]
+            
+            print("Station:", row[1])
+            print("Locality code:", row[0])
+            print(row[11])
