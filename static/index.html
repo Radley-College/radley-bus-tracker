@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>School Bus Tracker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1> Radley bus tracker</h1>
+        <p>departures:</p>
+    </header>
+
+
+    <main>
+
+        <section class="status">
+            <span class="status-dot"></span>
+            <span>Live</span>
+
+            <p>Last updated:</p>
+        </section>
+
+
+        <section class="bus-board">
+
+            <div class="board-header">
+                <span>Route</span>
+                <span>Destination</span>
+                <span>Departure</span>
+            </div>
+
+
+            <div class="bus-row">
+                <span class="route">42</span>
+                <span>westgate</span>
+                <span class="time">3 min</span>
+            </div>
+
+
+            <div class="bus-row">
+                <span class="route">15</span>
+                <span>location 2</span>
+                <span class="time">7 min</span>
+            </div>
+
+
+            <div class="bus-row">
+                <span class="route">8</span>
+                <span>location 3</span>
+                <span class="time">12 min</span>
+            </div>
+
+        </section>
+
+
+        <button class="refresh-button">
+            Refresh
+        </button>
+
+    </main>
+
+</body>
+
+</html>
