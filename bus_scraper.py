@@ -2,14 +2,25 @@ import time
 from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
-
+import os
+import pickle
 
 class BusAPI:
   def __init__(self, cache_duration=60):
     # Time in seconds before the cache expires
     self.cache_duration = cache_duration
     self.cached_times = None
-    self.last_fetched = None
+    self.last_fetched = datetime.now()
+    file_path = "Saved_Bus_Times.pkl"
+    if os.path.exists(file_path):
+      with open(file_path, "rb") as file:
+        self.cached_times = pickle.load(file)
+    else:
+      with open(file_path, "wb") as file:
+        timescache = self.__fetch_data()
+        pickle.dump(timescache, file)
+
+
 
   def __fetch_data(self):
     """Fetches data from the remote source, and scrapes it into the cache"""
