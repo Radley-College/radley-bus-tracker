@@ -5,11 +5,13 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import requests
 
-station = input()
+
 station_start_id = 'RAD'
 station_end_id = ''
 trip_id = []
 train_arrival_time = []
+train_departure_time_list = []
+
 
 
 params = {
@@ -33,6 +35,7 @@ def train_schedule():
     for message in board["messages"]:
         print("!", message)
         
+    train_departure_time_list = []
     for d in board["departures"]:
         service_id = d["trip_id"]
         response = requests.get(f"{API}/rail/services/{service_id}.json", headers=HEADERS)
@@ -81,6 +84,7 @@ def train_schedule():
             f"{d['destination']:<24} "
             f"{d['status']:<9} {note}"
         )
+            train_departure_time_list.append(f"{uk_time(d['aimed_departure_time'])}")
 
         
         """if d["destination"] in ["Oxford", "Banbury"]:
@@ -109,7 +113,26 @@ def follow_up(trip_id):
                 if stop.get("name", "").lower() == station_arrive.lower():
                     print(f"station:{stop['name']},", "exp arrival time:", uk_time(stop['aimed_arrival_time']))
         
+def follow_up_new(trip_id):
+    station_arrive = "oxford"
+    for count, time in enumerate(train_arrival_time):
+        for i in train_departure_time_list:
+            if time == i:
+                arrive_at_oxford = i
+                follow_up = requests.get(f"{API}/rail/services/{trip_id[count]}.json", headers=HEADERS)
+                follow_up.raise_for_status()
+                train_data = follow_up.json()
+            
+                stops = train_data.get("calls", [])
+                for stop in stops:
+                    if stop.get("name", "").lower() == station_arrive.lower():
+                        print(f"station:{stop['name']},", "exp arrival time:", uk_time(stop['aimed_arrival_time']), arrive_at_oxford)
+        
+        
+        
+        
+
 train_schedule()
-follow_up(trip_id)
+follow_up_new(trip_id)
 
     
