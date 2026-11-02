@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 import os
 import pickle
 
+from SandboxFile import bus_list, george_arrival_times
+
+
 class BusAPI:
   def __init__(self, cache_duration=60):
     # Time in seconds before the cache expires
@@ -19,19 +22,19 @@ class BusAPI:
       with open(file_path, "wb") as file:
         timescache = self.__fetch_data()
         pickle.dump(timescache, file)
-
-
+        self.cached_times = timescache
 
   def __fetch_data(self):
     """Fetches data from the remote source, and scrapes it into the cache"""
-    url = "https://www.oxfordbus.co.uk/stops/340001182OPP"
+    url = "https://www.oxfordbus.co.uk/stops/340001182OUT"
     response = requests.get(url)
     bus_list = []
     response_text = response.text
     soup = BeautifulSoup(response_text, "html.parser")
     base_time = datetime.now()
+    # print(soup)
     bus_time = soup.find_all(
-        "div", {"class": "single-visit__arrival-time__cell"}
+      "div", {"class": "single-visit__arrival-time__cell"}
     )
     for item in bus_time:
       text = item.get_text(strip=True)
@@ -41,7 +44,38 @@ class BusAPI:
         bus_list.append(departure.strftime("%H:%M"))
       else:
         bus_list.append(text)
-    return bus_list
+    #print("Times at radley", bus_list)
+    # finds the time a bus arrives at radley and george street northbound
+    bus_arrive_times = []
+    george_arrival_times = []
+    bus_links = soup.find_all(
+      "a", {"class": "single-visit"}
+    )
+    for link in bus_links:
+      url_two = "https://www.oxfordbus.co.uk" + link["href"]
+      responsetwo = requests.get(url_two)
+      # print(responsetwo.status_code)
+      # print(responsetwo.text[:500])
+      response_text_two = responsetwo.text
+      souptwo = BeautifulSoup(response_text_two, "html.parser")
+      # print(souptwo)
+
+      bus_time_two = souptwo.find_all(
+        "button", {"class": "journey-list__button", "data-atcocode": "340001182OUT"}
+      )
+      for item in bus_time_two:
+        text = item.get_text()
+        time = text.split()[0]
+        bus_arrive_times.append(time)
+
+      george_time_two = souptwo.find_all(
+        "button", {"class": "journey-list__button", "data-atcocode": "340000864B1"}
+      )
+      for item in george_time_two:
+        text = item.get_text()
+        time = text.split()[0]
+        george_arrival_times.append(time)
+    return bus_arrive_times, george_arrival_times
 
   def get_data(self):
     """Checks if the cache is fresh. Refreshes if needed. Returns the data."""
