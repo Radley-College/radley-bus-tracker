@@ -96,7 +96,7 @@ def train_schedule():
             platform = f"plat {d['platform'] or '-':>3}"
             destination = d['destination']
             status = d['status']
-            note = d["cancel_reason"] or d["delay_reason"] or ""
+            #note = d["cancel_reason"] or d["delay_reason"] or ""
             
             oxford_arr = "--:--"
             for stop in stops[oxford_index:]:
