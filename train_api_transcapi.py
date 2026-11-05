@@ -5,11 +5,14 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import requests
 
-station = input()
+
 station_start_id = 'RAD'
 station_end_id = ''
 trip_id = []
 train_arrival_time = []
+train_departure_time_list = []
+all_train_data = []
+
 
 
 params = {
@@ -32,7 +35,9 @@ board = requests.get(f"{API}/rail/station_timetables/{station_start_id}.json", h
 def train_schedule():
     for message in board["messages"]:
         print("!", message)
-        
+    
+    all_train_data.clear()
+    
     for d in board["departures"]:
         service_id = d["trip_id"]
         response = requests.get(f"{API}/rail/services/{service_id}.json", headers=HEADERS)
@@ -69,18 +74,54 @@ def train_schedule():
         )"""
         
         
-        if passes_oxford:
+        """if passes_oxford:
             trip_id.append(service_id)
-            train_arrival_time.append(uk_time(d['aimed_departure_time']))
+            string_time = uk_time(d['aimed_departure_time'])
+            train_arrival_time.append(string_time)
+            train_departure_time_list.append(string_time)
+            
             note = d["cancel_reason"] or d["delay_reason"] or ""
             
             print(
-            f"{uk_time(d['aimed_departure_time'])}  "
+            f"{string_time}  "
             f"exp {uk_time(d['expected_departure_time'])}  "
             f"plat {d['platform'] or '-':>3}  "
             f"{d['destination']:<24} "
             f"{d['status']:<9} {note}"
-        )
+        )"""
+        
+        if passes_oxford:
+            time_str = uk_time(d['aimed_departure_time'])
+            exp_time = f"exp {uk_time(d['expected_departure_time'])}"
+            platform = f"plat {d['platform'] or '-':>3}"
+            destination = d['destination']
+            status = d['status']
+            note = d["cancel_reason"] or d["delay_reason"] or ""
+            
+            oxford_arr = "--:--"
+            for stop in stops[oxford_index:]:
+                if stop.get("crs_code") == "OXF":
+                    oxford_arr = uk_time(stop.get('expected_arrival_time') or stop.get('aimed_arrival_time'))
+                    break
+            
+            arrival_string = f"arrival time: {oxford_arr}"
+            
+            all_train_data.append([
+                time_str, 
+                exp_time, 
+                platform, 
+                destination, 
+                status, 
+                arrival_string
+            ])
+            
+            """print(
+                f"{time_str}  "
+                f"{exp_time}  "
+                f"{platform}  "
+                f"{destination:<24} "
+                f"{status:<9} {note:<10} | {arrival_string}"
+            )"""
 
         
         """if d["destination"] in ["Oxford", "Banbury"]:
@@ -109,7 +150,15 @@ def follow_up(trip_id):
                 if stop.get("name", "").lower() == station_arrive.lower():
                     print(f"station:{stop['name']},", "exp arrival time:", uk_time(stop['aimed_arrival_time']))
         
-train_schedule()
-follow_up(trip_id)
 
+        
+        
+        
+        
+
+train_schedule()
+#follow_up(trip_id)
+#follow_up_new()
+print(all_train_data)
+    
     
