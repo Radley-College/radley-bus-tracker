@@ -28,6 +28,8 @@ class TRAINAPI:
     def __call__(self):
         
         all_train_data = ()
+        radley_arrival_times = []
+        oxford_arrival_times = []
         
         for message in self.board.get("messages", []):
             print("!", message)
@@ -63,29 +65,19 @@ class TRAINAPI:
             
             if passes_oxford:
                 time_str = uk_time(d['aimed_departure_time'])
-                exp_time = f"exp {uk_time(d['expected_departure_time'])}"
-                platform = f"plat {d['platform'] or '-':>3}"
-                destination = d['destination']
-                status = d['status']
-                
+
                 oxford_arr = "--:--"
                 for stop in stops[oxford_index:]:
                     if stop.get("crs_code") == "OXF":
                         oxford_arr = uk_time(stop.get('expected_arrival_time') or stop.get('aimed_arrival_time'))
                         break
                 
-                arrival_string = f"arrival time: {oxford_arr}"
+                radley_arrival_times.append(time_str)
+                oxford_arrival_times.append(oxford_arr)
                 
-                single_train_tuple = (
-                    time_str, 
-                    exp_time, 
-                    platform, 
-                    destination, 
-                    status, 
-                    arrival_string
-                )
 
-                all_train_data += (single_train_tuple,)
+
+        all_train_data += (radley_arrival_times, oxford_arrival_times)
 
         return all_train_data
 

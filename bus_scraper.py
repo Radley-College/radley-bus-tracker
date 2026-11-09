@@ -91,6 +91,6 @@ class BusAPI:
 if __name__ == "__main__":
     api = BusAPI(cache_duration=60)
     while True:
-        data = api.get_data(walk=True)
+        data = api.get_data(walk=False)
         print(data)
         time.sleep(10)
