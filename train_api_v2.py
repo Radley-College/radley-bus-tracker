@@ -1,7 +1,7 @@
 
 
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import requests
 
@@ -23,9 +23,9 @@ class TRAINAPI:
             "limit": 100
         }
         
-        self.board = requests.get(f"{API}/rail/station_timetables/{station_start_id}.json", headers=HEADERS, params=self.params).json()
+        self.board = requests.get(f"{API}/rail/station_timetables/{station_start_id}.json", headers=HEADERS, params=self.params)#.json()
 
-    def __call__(self):
+    def __call__(self, if_walk=True):
         
         all_train_data = ()
         radley_arrival_times = []
@@ -72,7 +72,9 @@ class TRAINAPI:
                         oxford_arr = uk_time(stop.get('expected_arrival_time') or stop.get('aimed_arrival_time'))
                         break
                 
-                radley_arrival_times.append(time_str)
+                if if_walk:
+                    time_obj = datetime.strptime(time_str, "%H:%M")
+                    time_str = (time_obj - timedelta(minutes=15)).strftime("%H:%M")
                 oxford_arrival_times.append(oxford_arr)
                 
 
@@ -85,5 +87,5 @@ class TRAINAPI:
 if __name__ == "__main__":
     train_api = TRAINAPI(station_start_id='RAD')
     
-    final_data = train_api()
+    final_data = train_api(if_walk=True)
     print(final_data)
