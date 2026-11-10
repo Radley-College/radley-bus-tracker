@@ -22,6 +22,7 @@ class BusAPI:
     bus_time = soup.find_all(
         "div", {"class": "single-visit__arrival-time__cell"}
     )
+    print(response_text)
     for item in bus_time:
       text = item.get_text(strip=True)
       if "mins" in text:

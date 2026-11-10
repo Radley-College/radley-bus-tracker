@@ -1,11 +1,120 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f5f7;
-    color: #222;
-    margin: 0;
-    padding: 40px;
+
+/* General page styling */
+* {
+    box-sizing: border-box;
 }
 
-h1 {
-    color: #123b5d;
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
 }
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Main content */
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Timetable heading */
+main h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 25px 0;
+    color: #1e3a8a;
+}
+
+/* Bus timetable */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: none;
+    padding: 18px;
+    text-align: center;
+}
+
+table th {
+    background: #eff6ff;
+    color: #1e40af;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+table tr:hover {
+    background: #e0f2fe;
+    transition: background 0.2s ease;
+}
+
+/* Reload button */
+button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 28px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    main {
+        margin: 20px 12px;
+        padding: 20px;
+    }
+
+    table th,
+    table td {
+        padding: 12px;
+    }
+  }
