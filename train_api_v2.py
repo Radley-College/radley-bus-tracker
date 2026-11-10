@@ -19,11 +19,11 @@ class TRAINAPI:
         
         self.params = {
             "from_offset": 0,
-            "to_offset": 240,
+            "to_offset": 360,
             "limit": 100
         }
         
-        self.board = requests.get(f"{API}/rail/station_timetables/{station_start_id}.json", headers=HEADERS, params=self.params)#.json()
+        self.board = requests.get(f"{API}/rail/station_timetables/{station_start_id}.json", headers=HEADERS, params=self.params).json()
 
     def __call__(self, if_walk=True):
         
@@ -75,6 +75,7 @@ class TRAINAPI:
                 if if_walk:
                     time_obj = datetime.strptime(time_str, "%H:%M")
                     time_str = (time_obj - timedelta(minutes=15)).strftime("%H:%M")
+                radley_arrival_times.append(time_str)
                 oxford_arrival_times.append(oxford_arr)
                 
 
@@ -87,5 +88,5 @@ class TRAINAPI:
 if __name__ == "__main__":
     train_api = TRAINAPI(station_start_id='RAD')
     
-    final_data = train_api(if_walk=True)
+    final_data = train_api(if_walk=False)
     print(final_data)
